@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import router from "./routes/user-routes.js";
+import blogRouter from "./routes/blog-routes.js";
 
 const app = express();
 
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.json());
 //now to provide idea to app that we are using routes->middleware
 app.use("/api/user", router);
+app.use("/api/blog", blogRouter);
 
 mongoose
   .connect(

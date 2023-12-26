@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 
 const Schema=mongoose.Schema;
 
@@ -16,7 +16,15 @@ const userSchema = new Schema({
         type:String,
         require:true, 
         minlength:6
-    }
+    },
+    //blogs array as there can be multiple blogs
+    blogs:[
+        {
+            type: mongoose.Types.ObjectId,
+            ref:"Blog",
+            required:true
+        }
+    ]
 });
 
 export default mongoose.model("User",userSchema);
